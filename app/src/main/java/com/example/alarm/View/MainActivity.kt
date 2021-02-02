@@ -8,10 +8,11 @@ import android.widget.Button
 import android.widget.CheckBox
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.example.alarm.R
 
 class MainActivity : AppCompatActivity() {
-    val idZadania = 383939;
+    val idZadania = 3839;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +37,15 @@ class MainActivity : AppCompatActivity() {
 
     fun odswiezUprawnienia(){
         var checkbox = findViewById<CheckBox>(R.id.cbUprawnienia)
+        var przyciskUprawnienia = findViewById<Button>(R.id.btnUprawnienia)
         if(sprawdzUprawnienia()){
             checkbox.isChecked = true;
             checkbox.text = "OK"
+            przyciskUprawnienia.isVisible = false
         }else{
             checkbox.isChecked = false;
             checkbox.text = "Brak"
+            przyciskUprawnienia.isVisible = true
         }
     }
 
@@ -49,10 +53,19 @@ class MainActivity : AppCompatActivity() {
         return ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.DISABLE_KEYGUARD) == PackageManager.PERMISSION_GRANTED
     }
 
     fun zadajUpranien(){
-        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_SMS, Manifest.permission.READ_PHONE_STATE), idZadania)
+        ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.RECEIVE_SMS,
+                        Manifest.permission.READ_SMS,
+                        Manifest.permission.READ_PHONE_STATE,
+                        Manifest.permission.WAKE_LOCK,
+                        Manifest.permission.DISABLE_KEYGUARD
+
+                ), idZadania)
     }
 
 }

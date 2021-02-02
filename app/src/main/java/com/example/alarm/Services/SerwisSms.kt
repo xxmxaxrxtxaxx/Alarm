@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.alarm.Model.WiadomoscSms
 
+const val OBSLUGIWANY_NADAWCA = "RemizaInfo"
+
 class SerwisSms: BroadcastReceiver()  {
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -16,13 +18,16 @@ class SerwisSms: BroadcastReceiver()  {
             if (context != null) {
                 var wiadomosci = arrayListOf<WiadomoscSms>()
                 for (wiadomoscSms in Telephony.Sms.Intents.getMessagesFromIntent(intent).sortedBy { m -> "${m.originatingAddress} - ${m.timestampMillis}" }) {
+                    if(wiadomoscSms.originatingAddress == OBSLUGIWANY_NADAWCA){
                     var wiadomosciNadawcy = wiadomosci.find { m -> m.nadawca == wiadomoscSms.originatingAddress }
                     if (wiadomosciNadawcy == null) {
-                        wiadomosciNadawcy = WiadomoscSms(wiadomoscSms.displayOriginatingAddress,wiadomoscSms.messageBody)
+                        wiadomosciNadawcy = WiadomoscSms(wiadomoscSms.displayOriginatingAddress,"")
                         wiadomosci.add(wiadomosciNadawcy)
                     }
                     wiadomosciNadawcy.tresc += wiadomoscSms.messageBody
+                    }
                 }
+
                 wiadomosci.forEach({ m ->  instancjaObslugi(context).obsluzWiadomosc(m) })
             }
         }
