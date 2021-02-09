@@ -17,7 +17,6 @@ class ObslugaWiadomosci(private var context: Context) {
         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         context.startActivity(i)
 
-       // Toast.makeText(context,sms.nadawca + sms.tresc, Toast.LENGTH_LONG).show()
     }
 
 }
