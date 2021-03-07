@@ -66,6 +66,7 @@ class AlarmView :  AppCompatActivity() {
 
         findViewById<Button>(R.id.odrzuc).setOnClickListener { view ->
             odtwarzacz.stop()
+            this.finish();
 
             var odpowiedz = OdpowiedzWebApi(fun(sukces){
                 Toast.makeText(applicationContext, "odrzucono", Toast.LENGTH_SHORT).show()

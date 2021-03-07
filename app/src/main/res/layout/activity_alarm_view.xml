@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@drawable/tapeta"
     tools:context=".View.AlarmView">
 
     <TextView
@@ -11,35 +13,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Alarm OSP"
-        android:textSize="36sp"
+        android:textColor="#E1DEDE"
+        android:textSize="50sp"
         android:textStyle="bold"
         android:typeface="sans"
         app:layout_constraintBottom_toTopOf="@+id/wiadomosc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.27" />
 
     <Button
         android:id="@+id/potwierdz"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Potwierdź udział"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:height="75dp"
+        android:text="Potwierdź"
+        android:textColor="#4A9F4E"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/odrzuc"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.952" />
+        app:layout_constraintVertical_bias="0.975" />
 
     <Button
         android:id="@+id/odrzuc"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:height="75dp"
         android:text="Odrzuć"
+        android:textColor="#F30404"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.778" />
+        app:layout_constraintVertical_bias="0.873" />
 
     <EditText
         android:id="@+id/wiadomosc"
@@ -47,11 +67,14 @@
         android:layout_height="210dp"
         android:editable="false"
         android:ems="10"
-        android:gravity="start|top"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:inputType="textMultiLine"
+        android:textColor="#FAFFFFFF"
+        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/potwierdz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
+        app:layout_constraintVertical_bias="0.633" />
 </androidx.constraintlayout.widget.ConstraintLayout>
