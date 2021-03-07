@@ -55,7 +55,9 @@ class MainActivity : AppCompatActivity() {
                 && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(this, Manifest.permission.DISABLE_KEYGUARD) == PackageManager.PERMISSION_GRANTED
-    }
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+          }
 
     fun zadajUpranien(){
         ActivityCompat.requestPermissions(this,
@@ -63,7 +65,9 @@ class MainActivity : AppCompatActivity() {
                         Manifest.permission.READ_SMS,
                         Manifest.permission.READ_PHONE_STATE,
                         Manifest.permission.WAKE_LOCK,
-                        Manifest.permission.DISABLE_KEYGUARD
+                        Manifest.permission.DISABLE_KEYGUARD,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
 
                 ), idZadania)
     }

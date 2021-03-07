@@ -1,6 +1,7 @@
 package com.example.alarm.DataAccess
 
 import android.os.AsyncTask
+import android.util.Log
 import com.example.alarm.Model.Odpowiedz
 import com.google.gson.Gson
 import java.io.OutputStreamWriter
@@ -11,6 +12,9 @@ open class OdpowiedzWebApi(val funkcjaZwrotna: (Boolean) -> Unit) : AsyncTask<Od
     override fun doInBackground(vararg params: Odpowiedz?): Boolean {
         val adres = URL("http://ospalarm.herokuapp.com/api/wezwanie/" + params[0]!!.id)
         val json = Gson().toJson(params[0])
+
+Log.d("PUT",json);
+
         val polaczenie: HttpURLConnection = adres.openConnection() as HttpURLConnection
 
         polaczenie.setDoInput(true)
